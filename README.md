@@ -17,12 +17,11 @@ The primary goal of this project is purely educational: to explore and learn how
 
 **Gameplay & Touch Controls:**
 
+**Custom Settings Panel:**
+
 ![Gameplay 1](screenshots/gameplay1.jpg)
 ![Gameplay 2](screenshots/gameplay2.jpg)
 ![Gameplay 3](screenshots/gameplay3.jpg)
-
-**Custom Settings Panel:**
-
 ![Settings](screenshots/settings.jpg)
 
 
