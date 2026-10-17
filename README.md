@@ -53,5 +53,6 @@ http://127.0.0.1:8484/{map_id} (e.g., kino, moon, nacht, ascension)
 The URL is clean: the port automatically forces WebGPU on Android devices.
 
 ## Disclaimer
-Call of Duty: Black Ops and all related assets are trademarks of Activision. This project is NOT affiliated with, endorsed by, or sponsored by Activision.
+Call of Duty: Black Ops and all related assets are trademarks of Activision. 
+World at War and all related assets are trademarks of Activision.. This project is NOT affiliated with, endorsed by, or sponsored by Activision.
 This repository is an educational fork of the open-source KisakBlack engine, distributed under the GPLv3 license (inherited from the original project).
