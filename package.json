@@ -1,0 +1,32 @@
+{
+  "name": "bo1z-lan",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "build": "vite build",
+    "start": "node server/index.ts",
+    "heroku-postbuild": "vite build",
+    "test": "tsc && vue-tsc -p client && vue-tsc -p e2e && vite build && node --test 'test/*.test.ts' && playwright test"
+  },
+  "devDependencies": {
+    "@intlify/unplugin-vue-i18n": "11.2.5",
+    "@playwright/test": "1.64.0",
+    "@types/node": "24.19.2",
+    "@types/ws": "8.18.2",
+    "@vitejs/plugin-vue": "6.0.10",
+    "typescript": "6.0.3",
+    "vite": "8.3.4",
+    "vue-tsc": "3.3.12"
+  },
+  "dependencies": {
+    "@fastify/static": "10.1.6",
+    "@fastify/websocket": "11.3.4",
+    "fastify": "5.12.5",
+    "hash-wasm": "4.12.0",
+    "vue": "3.5.43",
+    "vue-i18n": "11.4.12"
+  }
+}

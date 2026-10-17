@@ -1,0 +1,6 @@
+cache/
+node_modules/
+build/
+telemetry/
+.cache/
+dist/

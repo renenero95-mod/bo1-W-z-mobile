@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <script src="/console-capture.js"></script>
+  <script src="/mirror-main.js"></script>
+  <meta charset="utf-8">
+  <script src="./webgpu-probe.js"></script>
+  <script src="./console-capture.js"></script>
+    <script src="./touch-test.js"></script>
+    <script src="./layout-editor.js"></script>
+  
+  
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Zombies</title>
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500&display=swap" crossorigin>
+  <script type="module" src="./main.ts"></script>
+
+
+<script>
+(function(){
+  if (window.__kbLandscapeV2) return;
+  window.__kbLandscapeV2 = true;
+
+  var touch = (window.matchMedia && matchMedia('(pointer: coarse)').matches) || ('ontouchstart' in window);
+  if (!touch) return;
+
+  // Se l'utente ha gia' fatto il landscape, non mostriamo l'overlay
+  var done = false;
+  try { done = sessionStorage.getItem('__kbLandscapeDone') === '1'; } catch(e){}
+  if (done) return;
+
+  // Non caricare la pagina: aspetta che l'utente tocchi
+  // Blocca il main() finche' non si risolve (ma solo se non e' gia' partito)
+  document.documentElement.style.visibility = 'hidden';
+
+  function show(){
+    document.documentElement.style.visibility = 'visible';
+
+    var ov = document.createElement('div');
+    ov.id = '__kbStart';
+    ov.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#000;color:#fff;' +
+      'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;' +
+      'font:700 30px monospace;letter-spacing:3px;touch-action:manipulation;' +
+      'user-select:none;-webkit-user-select:none;cursor:pointer;';
+    ov.innerHTML = '<div id="__kbStartTxt" style="color:#c00;">TAP TO PLAY</div>' +
+      '<div style="font:500 13px monospace;opacity:.55;letter-spacing:0;text-align:center;padding:0 20px;">Ruota il telefono in orizzontale<br>e tocca per iniziare</div>';
+    document.documentElement.appendChild(ov);
+
+    var started = false;
+    ov.addEventListener('click', start, true);
+    ov.addEventListener('touchend', start, true);
+
+    function start(e){
+      if (started) return;
+      started = true;
+      e.preventDefault();
+      e.stopPropagation();
+      document.getElementById('__kbStartTxt').textContent = '...';
+
+      var p;
+      try { p = document.documentElement.requestFullscreen({ navigationUI: 'hide' }); }
+      catch (err) { p = Promise.reject(err); }
+
+      Promise.resolve(p)
+        .catch(function(){})
+        .then(function(){
+          var o = screen.orientation;
+          return (o && o.lock) ? o.lock('landscape').catch(function(){}) : 0;
+        })
+        .then(function(){ return new Promise(function(r){ setTimeout(r, 400); }); })
+        .then(function(){
+          try { sessionStorage.setItem('__kbLandscapeDone', '1'); } catch(err){}
+          // Reload per far ripartire tutto con dimensioni corrette
+          location.reload();
+        });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', show);
+  } else {
+    show();
+  }
+})();
+</script>
+
+</head>
+<body>
+  <div id="app"></div>
+</body>
+</html>
