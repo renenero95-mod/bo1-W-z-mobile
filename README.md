@@ -11,6 +11,21 @@ The primary goal of this project is purely educational: to explore and learn how
 - Performance: optimized mirror blit (latest-frame-wins + zero-copy), draw call deduplication, pipeline cache handling.
 - Controls: full touch interface (joystick, look, fire, ADS, reload, jump), layout editor, and settings panel.
 
+## Screenshots
+
+*Screenshots shown for educational and technical demonstration purposes only.*
+
+**Gameplay & Touch Controls:**
+
+![Gameplay 1](screenshots/gameplay1.jpg)
+![Gameplay 2](screenshots/gameplay2.jpg)
+![Gameplay 3](screenshots/gameplay3.jpg)
+
+**Custom Settings Panel:**
+
+![Settings](screenshots/settings.jpg)
+
+
 ## What this repository does NOT include (Legal Disclaimer)
 **This repository contains ONLY source code.**
 It does NOT contain, host, or distribute any proprietary game assets, including but not limited to maps, textures, models, sounds, or game data.
