@@ -49,7 +49,7 @@ nohup env -u PREFIX node server/index.ts > ~/server.log 2>&1 &
 
 ## How to Play
 Open Chrome on your Android device and navigate to a map:
-http://127.0.0.1:8484/kino (or nacht, moon, ascension, etc.)
+http://127.0.0.1:8484/{map_id} (e.g., kino, moon, nacht, ascension)
 The URL is clean: the port automatically forces WebGPU on Android devices.
 
 ## Disclaimer
